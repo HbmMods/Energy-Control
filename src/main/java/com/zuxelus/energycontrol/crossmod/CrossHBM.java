@@ -32,6 +32,7 @@ import com.zuxelus.energycontrol.recipes.Recipes;
 import com.zuxelus.energycontrol.utils.DataHelper;
 import com.zuxelus.energycontrol.utils.FluidInfo;
 
+import api.hbm.energy.IBatteryItem;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -48,9 +49,7 @@ public class CrossHBM extends CrossModBase {
 
 	@Override
 	public boolean isElectricItem(ItemStack stack) {
-		if (stack.getItem() instanceof ItemBattery)
-			return true;
-		return false;
+		return stack.getItem() instanceof IBatteryItem;
 	}
 
 	@Override
@@ -1640,11 +1639,8 @@ public class CrossHBM extends CrossModBase {
 
 	@Override
 	public void loadRecipes() {
-		Recipes.addShapedRecipe(ModItems.itemKit, ItemCardType.KIT_HBM,
-				new Object[] { "IT", "PD", 'P', Items.paper, 'D', "dyeBlack",
-					'T', new ItemStack(ModItems.itemComponent, 1, ItemComponent.RADIO_TRANSMITTER), 'I', com.hbm.items.ModItems.ingot_steel });
-
-			Recipes.addKitRecipe(ItemCardType.KIT_HBM, ItemCardType.CARD_HBM);
+		Recipes.addShapedRecipe(ModItems.itemKit, ItemCardType.KIT_HBM, new Object[] { "IT", "PD", 'P', Items.paper, 'D', "dyeBlack", 'T', new ItemStack(ModItems.itemComponent, 1, ItemComponent.RADIO_TRANSMITTER), 'I', com.hbm.items.ModItems.ingot_steel });
+		Recipes.addKitRecipe(ItemCardType.KIT_HBM, ItemCardType.CARD_HBM);
 	}
 
 	@Override
